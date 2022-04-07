@@ -1,0 +1,12 @@
+Exercise 1: Verbalizing an ER Diagram
+
+- A board game is uniquely identified by the combination of its name and publisher. In addition, its genre is stored.
+- A player is uniquely idntified by his/her name. Furthermore, his/her skill rating is stored.
+- Each player owns aribitrarily many board games. Each board game is also owned by arbitrarily many players.
+- Each player has played most recently up to three board games, each on a specific date.
+- Each board game has been most recently played by one or more players, each time on a specific date.
+
+[My solutions correct, not the following (Tutorial):
+- Up to 3 player have most recently played a game.
+- One or more board games have been most recently played by a player.
+]

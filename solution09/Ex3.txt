@@ -1,0 +1,58 @@
+Exercise 3: Boyce-Codd Normal Form
+
+Exercise 3.1
+
+Primary key: {clientid, date}
+
+                 delivery(clientid,address,date,time,status,driverid,drivername,vehicle)
+                          --------         ----
+                  𝐹 = { clientid, date → address, time, status, driverid, drivername, vehicle       [primary key FD]
+                        date, time, vehicle → clientid, address, status, driverid, drivername       [key FD]
+                        date, time, driverid → clientid, address, status, drivername, vehicle       [key FD]
+                        clientid → address                                                         
+                        driverid → drivername 
+                        driverid, date → vehicle  }
+
+                        clientid → address   violates BCNF
+
+                ┏━━━━━━━━━━━━━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+
+  R1(clientid,date,time,status,driverid,drivername,vehicle)                                                                         R2(clientid, address)
+     -------- ----                                                                                                                     -------- 
+   𝐹 = { clientid, date → time, status, driverid, drivername, vehicle       [primary key FD]                                       𝐹 = { clientid → address }
+         date, time, vehicle → clientid, status, driverid, drivername       [key FD]
+         date, time, driverid → clientid, status, drivername, vehicle       [key FD]
+         driverid → drivername 
+         driverid, date → vehicle   }
+                                                                                        
+                driverid → drivername  violates BCNF                                                                                        BCNF ✔
+
+            ┏━━━━━━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+
+    R11(clientid,date,time,status,driverid,vehicle)                                                      R12(driverid, drivername)
+        -------- ----                                                                                        -------- 
+        𝐹 = { clientid, date → time, status, driverid, vehicle       [primary key FD]                 𝐹 = { driverid → drivername }
+              date, time, vehicle → clientid, status, driverid       [key FD]
+              date, time, driverid → clientid, status, vehicle       [key FD]
+              driverid, date → vehicle     }
+
+                driverid, date → vehicle  violates BCNF                                                             BCNF ✔
+
+            ┏━━━━━━━━━━━━━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+
+    R111(clientid,date,time,status,driverid)                                                      R112(driverid, date, vehicle)
+         -------- ----                                                                                 --------  ----
+        𝐹 = { clientid, date → time, status, driverid       [primary key FD]                    𝐹 = { driverid, date → vehicle }                 
+              date, time, driverid → clientid, status   }   [key FD]                          
+
+                                                lost:    date, time, vehicle → clientid, status, driverid     
+
+                         BCNF ✔                                                                                   BCNF ✔
+
+
+Exercise 3.2
+
+R2(clientid, address) = Clients
+R12(driverid, drivername) = Drivers
+R111(clientid, date, time, status, driverid) = Deliveries
+R112(driverid, date, vehicle) = Fleet

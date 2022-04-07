@@ -1,0 +1,29 @@
+                 R(set,step,piece,color,quantity,page,img,width,height)
+                   --- ---- ----- -----
+                  F = { key FD, set step -> page img, img -> width height }
+
+                        set step -> page img  violates BCNF
+
+                                       /\
+--------------------------------------+  +-----------------------------------------------
+  R1(set,step,piece,color,quantity)          R2(set,step,page,img,width,height)
+     --- ---- ----- -----                       --- ----
+         F = { key FD }               F = { set step -> page img, img -> width height }
+
+              BCNF                          img -> width height  violates BCNF
+
+                                                     / \
+             ---------------------------------------+   +----------------------------
+
+               R21(set,step,page,img)                         R22(img,width,height)
+                   --- ----                                       ---
+            F = { set step -> page img }                   F = { img -> width height }
+
+                         BCNF                                       BCNF  
+
+
+
+Zu Aufgabe 3:
+Der Split-Tree aus der Vorlesung stellen wir euch hier als plain-text formatierte Datei split.txt bereit, damit ihr euch daran für eure eigene Lösung orientieren könnt. Wir haben hier die Unicode-Symbole ersetzt, damit keiner Schwierigkeiten mit dem Encoding bekommt. Wir sind aber nicht abgeneigt, wenn ihr sie verwenden möchtet. Im Gegenteil. :wink:
+
+Hier der Unicode-Zeichensatz aus der Vorlesung: ┏ ━ ┛ ┗ ┓ → 𝐹 ✔

@@ -1,0 +1,5 @@
+The given CSV files still contain header lines with column names. If these remain unchanged the import using \copy will fail. Explain why!
+
+When trying to import a csv file which contains headers in the very first row, the import using \copy will fail because the column names have already been set (inluding their respective types) with the CREATE TABLE command before.
+Hence, SQL expects only data rows in the file according to the defined row type. 
+With the very first line of the file containing the header names and not data in the correct type format, SQL raises an error.

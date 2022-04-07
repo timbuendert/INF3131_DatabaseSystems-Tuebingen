@@ -1,0 +1,47 @@
+Exercise 1: About SQL
+
+Exercise 1.1
+- Row type of r1: (d real, e int, f int, a real, b text)
+- Row type of query result: (d real, e int, f int, a real, b text, x int, y int)
+
+
+Exercise 1.2
+(a) 
+This query is invalid because one refers to the row binding r in the SELECT statement, but this row binding is only defined locally within the subquery embedded in the FROM statement.
+Hence, this row binding r cannot be accessed outside of this subquery. Therefore, the query has no binding for the row r when one uses it in the SELECT statement and an error is raised.
+
+(b) 
+This query is invalid because one cannot refer to the row binding r (which is defined in the FROM statement) in a subquery contained in the FROM statement.
+Correlation can only be used in subqueries embedded in the SELECT or WHERE statement. But as r cannot be referenced to in this subquery, an error is raised.
+
+(c) 
+Generally, two row bindings s are created here, once in the subquery embedded in the SELECT statement and once in the outer FROM statement.
+While the latter one contains a column 'a', the first one does not which makes the query invalid.
+This is because in this first subquery, one defines the row binding s from the table s and uses s.a in the WHERE statement directly below.
+There, not the row binding s created in the outer FROM statement is used, but the row binding s from within this subquery.
+However, this s does not contain a column 'a' (as the table s does only contain columns x and y) and, consequently, it cannot be referred to which raises an error. 
+
+
+Exercise 1.3
+
+(a)
+CREATE TABLE r(a int, b int, c int, d int);
+
+SELECT r.a, r.b, r.c
+FROM r AS r;
+
+(b) 
+CREATE TABLE r(a int, b int, c int, d int);
+
+TABLE r; -- Alternative: SELECT r.* FROM r AS r;
+
+(c)
+SELECT t 
+FROM t AS t;
+
+
+Exercise 1.4
+Number of columns of join result = number of columns of r + number of columns of s
+Number of rows (combinations; size) of join result = j
+(a) 0 <= j <= |r| * |s|
+(b) 0 <= j <= |r| (because each row from r either matches with exactly one row of s or no row of s because x is the primary key in s)

@@ -1,0 +1,44 @@
+Exercise 2: Functional Dependencies
+
+Exercise 2.1
+a)
+X <- {}
+X <- {C, E}
+
+1. Iteration
+FD E -> D and E ELEMENT OF X:
+X = {C, D, E}
+
+2. Iteration
+FD D -> A and D ELEMENT OF X and
+FD D -> B and D ELEMENT OF X:
+X = {A, B, C, D, E} = schema(R)
+
+3. Iteration
+X = {A, B, C, D, E} = schema(R), unchanged because all attributes are already included in the cover (but ABC would now be element of X)
+
+{C,E}+ = {A, B, C, D, E}
+
+
+b)
+Primary key of R = {C, E} (as seen in exercise 2.1 a)
+-> Table is not in Boyce-Codd normal form because ABC -> D, E -> D and D -> A, B are not trivial as well as ABC, E and D are / contain not a key.
+
+Exercise 2.2
+a)
+A B C D E F
+1 1 1 1 1 1
+2 1 2 1 3 1
+3 2 3 1 1 1
+1 1 1 1 2 1
+4 2 2 1 1 1
+
+b)
+Inserting (1 1 1 2 1 1):
+
+AB -> C     works
+B -> DF     does not work because 1 (B) -> 2 (D) does violate the functional dependency which proposes 1 (B) -> 1 (D) (B -> F works)
+BE -> F     works
+A -> F      works
+
+Hence, inserting this row into the above table will violate the given functional dependencies.

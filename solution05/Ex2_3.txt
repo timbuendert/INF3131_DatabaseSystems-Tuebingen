@@ -1,0 +1,12 @@
+Exercise 2: Defining Keys
+
+Candidate key: minimal subset of columns of a relation to uniquely identify the rows in a relation (must be present and unique)
+Superkey: subset of columns which uniquely identifies the rows in a relation, may contain more columns than necessary for unique identification (e.g., when adding columns to a candidate key)
+Primary key: the one candidate key which will be predominantly used to identify rows in a relation (most suitable in terms of pragmatics and computional efficiency; must be present and unique)
+[Key: (sub)set of columns of a relation which uniquely identify the rows of a relation (value-based)]
+
+
+Exercise 3: Identifying Keys
+
+Candidate keys = {{C}, {A,B}, {A,D}, {B,D}}
+Superkeys = {{C}, {A,C}, {A,B}, {A,D}, {B,C}, {B,D}, {C,D}, {A,B,C}, {A,B,D}, {A,C,D}, {B,C,D}, {A,B,C,D}}

@@ -1,0 +1,37 @@
+Exercise 3: Non-monotonic Queries in the Relational Algebra
+
+Exercise 3.1
+
+                                                        π[pid, name]
+                                                        |
+                                                        ⋈
+                                    /                                          \
+                                π[pid]                                           '\'  (difference)
+                                |                                             /                    \
+                    ⋈[distance < cruisingrange]                            pilots                  π[pid, name, salary]
+                     /                   \                                                          |
+        π[pid, cruisingrange]            π[distance]                                                ⋈
+            |                            |                                                  /                   \
+            ⋈                            σ[flno = 'LH 970']                               ⋈                      π[flno←flno2]
+        /       \                        |                                             /     \                    |
+   certified    aircraft                 flights                                     crew     pilots              ⋈[(departs2 > departs ∧ departs2 < arrives) ∨ (departs2 < departs ∧ departs < arrives2)]
+                                                                                                              /                  \
+                                                                                                          π[departs, arrives]     π[flno2←flno, departs2←departs, arrives2←arrives]
+                                                                                                          |                       |
+                                                                                                          σ[flno = 'LH 970']      flights
+                                                                                                          |  
+                                                                                                          flights
+
+
+
+Exercise 3.2
+
+                \ (difference)
+        /               \
+π[flno, from, to]        π[flno, from, to]
+        |                |
+     flights             ⋈[distance > distance2]
+                       /   \
+                   flights  π[flno2←flno, distance2←distance]
+                            |
+                          flights

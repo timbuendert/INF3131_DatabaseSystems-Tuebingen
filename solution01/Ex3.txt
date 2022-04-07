@@ -1,0 +1,13 @@
+# Exercise 3: Structured Information
+
+In CSV files, the data is structured in a regular tabular style (flat data model) where one file represents one table and each line is a data line with the very first line defining the field names (headings).
+With this regular organization, one can iterate over the rows to perform operations like filtering and aggregating.
+Accordingly, relationships between objects can be encoded using (unique) identifiers in different tables containing different attributes. 
+For example, in the present case of tweets.csv and users.csv, the unique identifier user_id connects the two files by relating the corresponding objects. 
+The references can then be encoded via equalities of the identifier.
+This makes it possible to access important information about an object in a different table and at the same time also to avoid redundancies and inconsistencies while increasing the efficiency.
+
+On the other hand, JSON files structure the data and the relationships between objects using nested dictionaries and arrays. 
+In the Twitter example, these unique identifiers are also present, however, all further information with regard to a single object is contained in the corresponding JSON object (dictionary).
+Thereby, most of the information is present in both JSON files and this entails more redundancies than the CSV format does. 
+Hence, unique identifiers are not used to encode relationships between objects in different files but the relationships are encoded inside the object.

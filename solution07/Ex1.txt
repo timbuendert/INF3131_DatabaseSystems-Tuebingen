@@ -1,0 +1,31 @@
+Exercise 1: Constraints and References
+
+Exercise 1.1
+- Foreign key constraint: 
+A foreign key is a subset of columns of a (source) relation R referencing a (not necessarily distinct) (target) relation S iff for each row in R this subset of columns matches a (candidate) key of S and thereby uniquely identifies the rows.
+However, the foreign key is in general not a key in R.
+
+- Inclusion constraint: 
+Inclusion constraint presents another name for a foreign key constraint because the set of foreign key rows of R must be a subset of the rows containing the (candidate) key of S.
+
+- Referential integrity:
+Referential integrity entails that the foreign key constraint holds, i.e. that the value that is referred to will also be (uniquely) found in the target table.
+Hence, the foreign key must have a matching (candidate) key in the referenced table or the value in the source table (foreign key) must be NULL.
+The corresponding RDBS refuses any changes to the instance of a database if it violates the referential integrity of the database.
+
+
+Exercise 1.2
+First, pointers are pointing to the address of an object while value-based references uniquely identify a target row based on a contained value.
+Second, pointers can be dangling (i.e., not pointing to valid data) while value-based references can contain a value which is not found in the target column (cannot uniquely identify).
+Third, the problem for value-based references that they contain values which are not unique in the target columns is not existing for pointers.
+Finally, pointers can be dereferenced while multiple value-based references can be dereferenced at once using a join between source and target table.
+
+
+Exercise 1.3
+All kinds of database constraints (integrity constraints) discussed so far: 
+- Domain constraints
+- NOT-NULL constraints
+- UNIQUE constraints
+- CHECK constraints
+- (PRIMARY) KEY constraints
+- FOREIGN KEY (inclusion) constraints

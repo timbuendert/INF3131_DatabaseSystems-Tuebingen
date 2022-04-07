@@ -1,0 +1,24 @@
+# Exercise 2: Twitter Mini World
+
+Mini worlds present well-defined subsets of the real world which can be captured by database systems. 
+Generally, a mini world contains the relevant objects with their significant attributes and captures both relationships and constraints within this world.
+In this exercise, this concept is applied to Twitter and, more specifically, to the files "users.json" and "tweets.json".
+
+Objects: User, Tweet
+These objects contain nested information (further details) while being related in both directions. 
+In addition, they are the building blocks of the mini world which is then further characterized by their respective attributes.
+
+Attributes: screen_name, text & hashtag, users.id & tweets.id, lang (language), retweet_count, created_at (Date/Time), ...
+The two most significant attributes are the screen_name and text with the corresponding hashtags as this information is most essential to a tweet. 
+In addition, the created_at attribute positions the tweet in a temporal context.
+Furthermore, users.id and tweets.id present unique identifiers of the respective objects and are therefore crucial to access additional information.
+Moreover, the language (lang) and retweet_count are useful details concerning the target audience and gained popularity of the respective tweet.
+
+Relationships: 
+User writes Tweet.
+
+Constraints: 
+"One tweet can only be published by a one user."
+"Tweet-ID, User-ID and the screen_name have to be present and unique."
+"Length (len()) of the text of a tweet can only be between 1 and 280"
+"One User-ID corresponds to one screen_name and vice versa."
