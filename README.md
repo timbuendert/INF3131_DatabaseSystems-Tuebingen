@@ -1,2 +1,2 @@
-# INF3131_DatabaseSystems-Tuebingen
- Code associated with the course "Database Systems 1"
+# INF3131 Database Systems 1
+This repository includes the code associated with the assignments for the course "Database Systems 1". Starting with the treatment of different data models and languages, the relational data model emerges as the favorable option with its typed data, declarativity and data independence. Then, typical constructs such as constraints, (foreign) keys, SELECT-FROM-WHERE with extensions and joins are treated. Finally, good database design (1NF, Functional Dependencies -> BCNF, Entity-Relationship models) and relational algrebra present cornerstones of the module.
